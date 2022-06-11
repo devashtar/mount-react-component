@@ -6,7 +6,7 @@ function loadScript(src) {
     script.async = false
     script.defer = false
     script.crossOrigin = ''
-    document.body.append(script)
+    document.head.append(script)
 }
 loadScript('https://unpkg.com/react@18/umd/react.production.min.js')
 loadScript('https://unpkg.com/react-dom@18/umd/react-dom.production.min.js')
