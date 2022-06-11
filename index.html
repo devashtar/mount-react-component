@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/css/style.css" />
+        <title>Mount react component</title>
+
+        <!-- загружаем нужные библиотеки react -->
+        <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <!-- библиотека для поддержки jsx -->
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <!-- Так как компонент будет создан с помощью jsx синтаксиса, добавляем атрибут type="text/babel" -->
+        <script
+            type="text/babel"
+            src="assets/scripts/init-component.js"
+        ></script>
+        <!-- Наш скрипт, который позволит создать компонент -->
+        <script>
+            /* После загрузки документа вызываем createReactComponent */
+            window.onload = function () {
+                /* Первым аргументом передаём пустую строку или id элемента,
+                    в который необходимо встроить модальное окно.
+                    В качестве второго аргумента выступает объект. */
+                window.createReactComponent('my_modal', {
+                    username: 'John',
+                    age: 23,
+                })
+            }
+        </script>
+    </head>
+    <body>
+        <h2>Встраивание компонента в страницу</h2>
+        <p>
+            Для того, чтобы была возможность создавать React компоненты,
+            необходимо предварительно загрузить скрипты для работы с React.
+            Далее(если это необходимо), можно добавить babel, который позволит
+            создавать компоненты с помощью jsx синтаксиса.
+            <br />
+            После выполнения условий описанных выше, пишем скрипт для создания
+            компонента. Если нужно встроить компонент по какому-либо событию, то
+            создаём функцию(для инициализации компонента) в глобальном окружении
+            и вызываем её.
+        </p>
+
+        <!-- сюда встраиваем компонент, или же закомментируй элемент ниже чтобы встроить компонент в body -->
+        <div id="my_modal"></div>
+    </body>
+</html>
