@@ -1,5 +1,16 @@
 'use-strict'
 
+function loadScript(src) {
+    const script = document.createElement('script')
+    script.src = src
+    script.async = false
+    script.defer = false
+    script.crossOrigin = ''
+    document.body.append(script)
+}
+loadScript('https://unpkg.com/react@18/umd/react.production.min.js')
+loadScript('https://unpkg.com/react-dom@18/umd/react-dom.production.min.js')
+
 /* Стили */
 const layoutStyles = {
     backgroundColor: 'rgba(0,0,0,0.3)',
@@ -40,26 +51,31 @@ function getElement(id) {
 }
 
 /* Вспомогательная функция для создания компонента */
-window.createReactComponent = function (id = '', param = {}) {
-    const Modal = () => {
-        const [display, setDisplay] = React.useState(true)
-        return (
-            <>
-                {display && (
-                    <div style={layoutStyles} onClick={() => setDisplay(false)}>
-                        <div style={styles}>
-                            <h3>Params</h3>
-                            <pre>
-                                <code>{JSON.stringify(param, 2)}</code>
-                            </pre>
+window.picea = {
+    run: function (id = '', param = {}) {
+        const Modal = () => {
+            const [display, setDisplay] = React.useState(true)
+            return (
+                <>
+                    {display && (
+                        <div
+                            style={layoutStyles}
+                            onClick={() => setDisplay(false)}
+                        >
+                            <div style={styles}>
+                                <h3>Params</h3>
+                                <pre>
+                                    <code>{JSON.stringify(param, 2)}</code>
+                                </pre>
+                            </div>
                         </div>
-                    </div>
-                )}
-            </>
-        )
-    }
+                    )}
+                </>
+            )
+        }
 
-    const container = getElement(id)
-    const root = ReactDOM.createRoot(container)
-    root.render(<Modal />)
+        const container = getElement(id)
+        const root = ReactDOM.createRoot(container)
+        root.render(<Modal />)
+    },
 }

@@ -5,21 +5,8 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="assets/css/style.css" />
-        <title>Mount react component</title>
+        <title>Document</title>
 
-        <!-- Закомментированные скрипты используются во время разработки, вместо production версии -->
-        <!-- <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-        <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script> -->
-
-        <!-- загружаем нужные библиотеки react -->
-        <script
-            crossorigin
-            src="https://unpkg.com/react@18/umd/react.production.min.js"
-        ></script>
-        <script
-            crossorigin
-            src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"
-        ></script>
         <!-- библиотека для поддержки jsx -->
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <!-- Так как компонент будет создан с помощью jsx синтаксиса, добавляем атрибут type="text/babel" -->
@@ -27,19 +14,6 @@
             type="text/babel"
             src="assets/scripts/init-component.js"
         ></script>
-        <!-- Наш скрипт, который позволит создать компонент -->
-        <script>
-            /* После загрузки документа вызываем createReactComponent */
-            window.onload = function () {
-                /* Первым аргументом передаём пустую строку или id элемента,
-                    в который необходимо встроить модальное окно.
-                    В качестве второго аргумента выступает объект. */
-                window.createReactComponent('my_modal', {
-                    username: 'John',
-                    age: 23,
-                })
-            }
-        </script>
     </head>
     <body>
         <h2>Встраивание компонента в страницу</h2>
@@ -50,12 +24,16 @@
             создавать компоненты с помощью jsx синтаксиса.
             <br />
             После выполнения условий описанных выше, пишем скрипт для создания
-            компонента. Если нужно встроить компонент по какому-либо событию, то
-            создаём функцию(для инициализации компонента) в глобальном окружении
-            и вызываем её.
+            компонента. Если нужно встраивать компонент, по какому либо событию,
+            то создаём функцию в глобальном окружении и вызываем её, когда нужно
+            создать
         </p>
 
-        <!-- сюда встраиваем компонент, или же закомментируй элемент ниже чтобы встроить компонент в body -->
+        <button onclick="picea.run('my_modal', {name: 'John'})">
+            ПОКАЗАТЬ МОДАЛЬНОЕ ОКНО
+        </button>
+
+        <!-- сюда встраиваем компонент -->
         <div id="my_modal"></div>
     </body>
 </html>
